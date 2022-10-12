@@ -1,0 +1,80 @@
+<%- include('partials/head') %>
+
+    <body>
+        <!-- Navigation-->
+        <%- include('partials/navbar') %>
+            <!-- Product section-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                                src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                        <div class="col-md-6">
+                            <h1 class="display-5 fw-bolder">Tres Pinos</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">Posted on January 1, 2022 by Daryll</div>
+                            <div class="fs-5 mb-5">
+                                <span>$40.00</span>
+                            </div>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at
+                                dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus
+                                eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                            <div class="d-flex">
+                                <p>Address: 4 Purok Mangga, Brgy, Infanta, Quezon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="container">
+                <hr>
+                <h3>Where you’ll be</h3>
+            </div>
+           
+            <div class="row justify-content-center px-5 mb-5 my-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15433.644612522885!2d121.67728372841798!3d14.745850967073656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3398296f726b9805%3A0x4e6add9abd0cdbf!2sTres%20Pinos%20Beach%20Resort!5e0!3m2!1sen!2sph!4v1665579660991!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <!-- Comments section-->
+            <section class="container mb-5 px-5 px-lg-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <!-- Comment form-->
+                        <form class="mb-4"><textarea class="form-control" rows="3"
+                                placeholder="Join the discussion and leave a comment!"></textarea></form>
+                        <!-- Comment with nested comments-->
+                        <div class="d-flex mb-4">
+                            <!-- Parent comment-->
+                            <div class="flex-shrink-0"><img class="rounded-circle"
+                                    src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                            <div class="ms-3">
+                                <div class="fw-bold">Commenter Name</div>
+                                If you're going to lead a space frontier, it has to be government; it'll never be
+                                private enterprise. Because the space frontier is dangerous, and it's expensive, and it
+                                has unquantified risks.
+                                <!-- Child comment 1-->
+                                <div class="d-flex mt-4">
+                                    <div class="flex-shrink-0"><img class="rounded-circle"
+                                            src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        And under those conditions, you cannot establish a capital-market evaluation of
+                                        that enterprise. You can't get investors.
+                                    </div>
+                                </div>
+                                <!-- Child comment 2-->
+                                <div class="d-flex mt-4">
+                                    <div class="flex-shrink-0"><img class="rounded-circle"
+                                            src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        When you put money directly to a problem, it makes a good headline.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </section>
+            <%- include('partials/footer') %>
+    </body>
+
+    </html>
