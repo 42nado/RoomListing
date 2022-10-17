@@ -1,0 +1,51 @@
+<%- include('partials/head') %> 
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <% if (!user) { %> 
+      <h1>User</h1>
+      <p>Not logged in</p>
+    <% } else { %>
+      <div class="container text-align-center">
+        <h1>User</h1>
+      <p>Logged in as <%= user.username %></p>
+      <p> user id <%= user._id %>  </p>
+
+      </div>
+      
+    <% } %>
+    
+    <div class="container py-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%  for (let listing of listings) { %>
+              <tr>
+                <% if (listing.idOfOwner == user._id) { %>
+
+                  <th scope="row"><%= listing.id %></th>
+                  <td><%= listing.nameOfListing %></td>
+                  <td><%= listing.address %></td>
+                  <td><a href="/listing/<%= listing._id %>/edit" class="btn btn-primary">Edit</a></td>
+                  <td><form action="/listing/<%= listing._id %>?_method=DELETE" method="post" ><button class="btn btn-danger" >Delete</button></form></td>
+                  <td><a href="/home/<%= listing._id %>" class="btn btn-light">View</a></td>
+              </tr>
+              <% } %> 
+              <% } %>
+            </tbody>
+          </table>
+    </div>
+
+ 
+    <%- include('partials/footer') %> 
+</body>
+</html>
