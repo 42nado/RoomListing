@@ -1,0 +1,158 @@
+<%- include('partials/head') %> 
+
+<script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
+
+<script type="text/javascript">
+  window.onload = function() {
+    placeSearch.setVal({
+      key: 'WyVVZV87dxAmfjK4O7g5cHaGBj3lB6iu',
+      container: document.querySelector('#search-input'),
+      useDeviceLocation: true,
+      collection: [
+        'poi',
+        'airport',
+        'address',
+        'adminArea',
+      ]
+    });
+  }
+</script>
+<!-- <script type="text/javascript">
+  window.onload = function() {
+    let ps = placeSearch({
+      key: 'WyVVZV87dxAmfjK4O7g5cHaGBj3lB6iu',
+      container: document.querySelector('#search-input'),
+      useDeviceLocation: true,
+      collection: [
+        'poi',
+        'airport',
+        'address',
+        'adminArea',
+      ]
+    });
+
+    L.mapquest.key = 'WyVVZV87dxAmfjK4O7g5cHaGBj3lB6iu';
+
+    var map = L.mapquest.map('map', {
+      center: [0, 0],
+      layers: L.mapquest.tileLayer('map'),
+      zoom: 2
+    });
+
+    L.mapquest.control().addTo(map);
+
+    let markers = [];
+
+    ps.on('change', (e) => {
+      markers
+        .forEach(function(marker, markerIndex) {
+          if (markerIndex === e.resultIndex) {
+            markers = [marker];
+            marker.setOpacity(1);
+            map.setView(e.result.latlng, 11);
+          } else {
+            removeMarker(marker);
+          }
+        });
+    });
+
+    ps.on('results', (e) => {
+      markers.forEach(removeMarker);
+      markers = [];
+
+      if (e.results.length === 0) {
+        map.setView(new L.LatLng(0, 0), 2);
+        return;
+      }
+
+      e.results.forEach(addMarker);
+      findBestZoom();
+    });
+
+    ps.on('cursorchanged', (e) => {
+      markers
+        .forEach(function(marker, markerIndex) {
+          if (markerIndex === e.resultIndex) {
+            marker.setOpacity(1);
+            marker.setZIndexOffset(1000);
+          } else {
+            marker.setZIndexOffset(0);
+            marker.setOpacity(0.5);
+          }
+        });
+    });
+
+    ps.on('clear', () => {
+      console.log('cleared');
+      map.setView(new L.LatLng(0, 0), 2);
+      markers.forEach(removeMarker);
+    });
+
+    ps.on('error', (e) => {
+      console.log(e);
+    });
+
+    function addMarker(result) {
+      let marker = L.marker(result.latlng, {opacity: .4});
+      marker.addTo(map);
+      markers.push(marker);
+    }
+
+    function removeMarker(marker) {
+      map.removeLayer(marker);
+    }
+
+    function findBestZoom() {
+      let featureGroup = L.featureGroup(markers);
+      map.fitBounds(featureGroup.getBounds().pad(0.5), { animate: false });
+    }
+  }
+</script> -->
+<body>
+    <%- include('partials/navbar') %> 
+    <div class="container px-5 py-5">
+        <form action="/listing/<%= listing._id %>?_method=PUT" method="post">
+          <div class="form-group">
+
+            <input type="text" class="form-control" name="nameOfOwner" id="nameOfOwner" value="<%= user.username %>" readonly>
+        </div>
+            <div class="form-group">
+              <label for="nameOfListing">Name of Listing</label>
+              <input type="text" class="form-control" name="nameOfListing" id="nameOfListing" aria-describedby="emailHelp" placeholder="Enter Name of Listing" value="<%= listing.nameOfListing %> " >
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control"  name="description" id="description" rows="3"  ><%= listing.description %></textarea>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" name="address" id="search_input" aria-describedby="emailHelp" value="<%= listing.address %> " placeholder="Address">
+            </div>
+            <div class="form-group">
+              <label for="address">Address Map Source</label><br>
+              <a href="https://freeimage.host/i/tdni7t"><img src="https://iili.io/tdni7t.md.png" alt="tdni7t.md.png" border="0"></a>
+              <input type="text" class="form-control" name="addressmap" id="search_input" aria-describedby="emailHelp" placeholder="Address MAp" value="<%= listing.addressmap %> ">
+            </div>
+              <div class="form-group">
+                <label for="address">Picture</label>
+                <input type="text" class="form-control" name="picture" id="picture" aria-describedby="emailHelp" placeholder="Insert Link of the Picture" value="<%= listing.picture %>" >
+              </div>
+              <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Category</label>
+              <div class="form-group">
+                <select class="custom-select my-1 mr-sm-2 form-control" name="category" id="category" select="va" >
+                    <% for(category of categories) { %> 
+                    <option value="<%= category %>" selected = <% listing.category === category ? true : false %>  ><%= category %> </option>
+                    <% } %> 
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" name="price" id="price" aria-describedby="emailHelp" placeholder="Price" value="<%= listing.price %>">
+              </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+    </div>
+      <%- include('partials/footer') %> 
+</body>
+</html>
