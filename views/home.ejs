@@ -1,4 +1,4 @@
-<%-include('partials/head.ejs')%>
+<%-include('partials/head')%>
   <body>
     <%-include('partials/navbar')%>
     <!-- Header-->
@@ -15,7 +15,7 @@
     </header>
     <!-- Section-->
     <section class="py-5">
-      <div class="container px-4 px-lg-5 mt-5">
+      <div class="container container-fluid px-4 px-md-5 mt-5">
         <div
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         >
@@ -37,6 +37,8 @@
                   <h6><i><%= listing.address %>  </i> </h6>
                   <!-- Product price-->
                   <p><%= listing.createdAt %> </p>
+                  <p><%= listing.price %> </p>
+                  <p>Posted By : <%=  listing.nameOfOwner%> </p>
                 </div>
               </div>
               <!-- Product actions-->
