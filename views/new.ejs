@@ -3,6 +3,11 @@
     <%- include('partials/navbar') %> 
     <div class="container px-5 py-5">
         <form action="/listing" method="post">
+            <div class="form-group ">
+
+                <input type="text" class="form-control" name="nameOfOwner" id="nameOfOwner" value="<%= user.username %>" readonly>
+                <input type="text" class="form-control" name="idOfOwner" id="idOfOwner" value="<%= user._id %>" readonly>
+            </div>
             <div class="form-group">
               <label for="nameOfListing">Name of Listing</label>
               <input type="text" class="form-control" name="nameOfListing" id="nameOfListing" aria-describedby="emailHelp" placeholder="Enter Name of Listing">
@@ -13,11 +18,16 @@
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" name="address" id="address" aria-describedby="emailHelp" placeholder="Address">
+                <input type="text" class="form-control" name="address" id="search_input" aria-describedby="emailHelp" placeholder="Address">
+              </div>
+              <div class="form-group">
+                <label for="address">Address Map Source</label><br>
+                <a href="https://freeimage.host/i/tdni7t"><img src="https://iili.io/tdni7t.md.png" alt="tdni7t.md.png" border="0"></a>
+                <input type="text" class="form-control" name="addressmap" id="search_input" aria-describedby="emailHelp" placeholder="Address MAp">
               </div>
               <div class="form-group">
                 <label for="address">Picture</label>
-                <input type="text" class="form-control" name="picture" id="address" aria-describedby="emailHelp" placeholder="Insert Link of the Picture">
+                <input type="text" class="form-control" name="picture" id="picture" aria-describedby="emailHelp" placeholder="Insert Link of the Picture">
               </div>
               <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Category</label>
               <div class="form-group">
@@ -27,11 +37,13 @@
                     <% } %> 
                   </select>
               </div>
-
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" name="price" id="price" aria-describedby="emailHelp" placeholder="Price">
+              </div>
             <button type="submit" class="btn btn-primary">Post</button>
           </form>
     </div>
-
       <%- include('partials/footer') %> 
 </body>
 </html>
