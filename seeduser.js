@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User = require("./models/users");
 
 
-mongoose.connect("mongodb+srv://daryllfortunado:10292000@listing.gjrdpph.mongodb.net/?retryWrites=true&w=majority&appName=listing")
+mongoose.connect("mongodb+srv://daryllfortunado:GnKfCIGBbGFyCnlZ@listing.gjrdpph.mongodb.net/?retryWrites=true&w=majority&appName=listing")
   .then(() => {
     console.log("Mongoose Connection OPen!");
   })
